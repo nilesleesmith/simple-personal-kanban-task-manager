@@ -1,20 +1,20 @@
 // server.js
 
-var express = require('express');
-var app = express();
-var port = process.env.PORT || 3001;
-var mongoose = require('mongoose');
-var passport = require('passport');
-var flash = require('connect-flash');
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3001;
+const mongoose = require('mongoose');
+const passport = require('passport');
+const flash = require('connect-flash');
 
-var morgan = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session');
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 
-var configDB = require('./config/database.js');
+const configDB = require('./config/database.js');
 
-var db;
+let db;
 
 mongoose.connect(configDB.url, {
   dbName: configDB.dbName,
