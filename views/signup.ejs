@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signup - Personal Kanban Task Manager</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <h1>Signup</h1>
+    <% if (message.length > 0) { %>
+      <p><%= message[0] %></p>
+    <% } %>
+    <form action="/signup" method="POST">
+      <p><label>Email <input type="text" name="email"></label></p>
+      <p><label>Password <input type="password" name="password"></label></p>
+      <button type="submit">Signup</button>
+    </form>
+    <p>Already have an account? <a href="/login">Login</a></p>
+    <p><a href="/">Home</a></p>
+  </body>
+</html>

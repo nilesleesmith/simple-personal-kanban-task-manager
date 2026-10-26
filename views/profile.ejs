@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Personal Kanban Task Manager</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <h1>My Tasks</h1>
+    <p><%= user.local.email %></p>
+    <p><a href="/logout">Logout</a></p>
+
+    <% if (taskMessage.length > 0) { %>
+      <p><%= taskMessage[0] %></p>
+    <% } %>
+
+    <h2>Add a task</h2>
+    <form action="/tasks" method="POST">
+      <label>Task title <input type="text" name="title"></label>
+      <button type="submit">Add Task</button>
+    </form>
+
+    <h2>Kanban Board</h2>
+    <% var columns = [
+      { name: 'To Do', status: 'todo' },
+      { name: 'In Progress', status: 'in-progress' },
+      { name: 'Done', status: 'done' }
+    ] %>
+    <div class="board">
+      <% for (var i = 0; i < columns.length; i++) { %>
+        <div class="column">
+          <h3><%= columns[i].name %></h3>
+          <% var foundTasks = false %>
+          <% for (var j = 0; j < tasks.length; j++) { %>
+            <% if (tasks[j].status === columns[i].status) { %>
+              <% foundTasks = true %>
+              <div class="task">
+                <p><%= tasks[j].title %></p>
+                <p><a href="/tasks/<%= tasks[j]._id %>/edit">Edit</a></p>
+                <form action="/tasks/<%= tasks[j]._id %>/status" method="POST">
+                  <select name="status">
+                    <option value="todo" <% if (tasks[j].status === 'todo') { %>selected<% } %>>To Do</option>
+                    <option value="in-progress" <% if (tasks[j].status === 'in-progress') { %>selected<% } %>>In Progress</option>
+                    <option value="done" <% if (tasks[j].status === 'done') { %>selected<% } %>>Done</option>
+                  </select>
+                  <button type="submit">Move</button>
+                </form>
+                <form action="/tasks/<%= tasks[j]._id %>/delete" method="POST">
+                  <button type="submit">Delete</button>
+                </form>
+              </div>
+            <% } %>
+          <% } %>
+          <% if (!foundTasks) { %>
+            <p>No tasks.</p>
+          <% } %>
+        </div>
+      <% } %>
+    </div>
+  </body>
+</html>

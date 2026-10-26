@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Task - Personal Kanban Task Manager</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <h1>Edit Task</h1>
+    <% if (taskMessage.length > 0) { %>
+      <p><%= taskMessage[0] %></p>
+    <% } %>
+    <form action="/tasks/<%= task._id %>/edit" method="POST">
+      <label>Task title <input type="text" name="title" value="<%= task.title %>"></label>
+      <button type="submit">Save Changes</button>
+    </form>
+    <p><a href="/profile">Cancel</a></p>
+  </body>
+</html>
