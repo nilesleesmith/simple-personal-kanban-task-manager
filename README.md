@@ -1,39 +1,101 @@
-# Personal Kanban Task Manager
+# Simple Personal Kanban Task Manager
 
-This application follows the Passport and database structure from `savage-auth`. Users can sign up, log in, and create, view, edit, move, and delete their own tasks in a three-column Kanban board.
+A personal Kanban board where authenticated users can create, organize, edit, and delete their own tasks.
 
-## Configure MongoDB Atlas
+## Overview
 
-Create a file named `atlas-credentials.env` in this folder. Use the connection details provided by MongoDB Atlas:
+Simple Personal Kanban Task Manager is an authenticated CRUD application built with Node.js, Express, EJS, Passport, and MongoDB.
 
-```dotenv
-MONGODB_USERNAME="your_database_username"
-MONGODB_PASSWORD="your_database_password"
-MONGODB_URI="mongodb+srv://your_database_username:your_url_encoded_password@your_cluster_host/?retryWrites=true&w=majority"
+Users can sign up, log in, create tasks, edit task titles, and move tasks between **To Do**, **In Progress**, and **Done**. Task queries are scoped to the authenticated user's account so each user manages only their own board.
+
+## Features
+
+- Create an account
+- Log in and log out
+- Add tasks
+- View tasks in a three-column Kanban board
+- Edit task titles
+- Move tasks between To Do, In Progress, and Done
+- Delete tasks
+- Scope task records to the logged-in user
+
+## Technologies
+
+<p>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" title="HTML">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" width="40" height="40">
+  </a>
+  &nbsp;
+  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" title="CSS">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" width="40" height="40">
+  </a>
+  &nbsp;
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="JavaScript">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" width="40" height="40">
+  </a>
+  &nbsp;
+  <a href="https://nodejs.org/" title="Node.js">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" width="40" height="40">
+  </a>
+  &nbsp;
+  <a href="https://expressjs.com/" title="Express">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" width="40" height="40">
+  </a>
+  &nbsp;
+  <a href="https://www.mongodb.com/" title="MongoDB">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="40" height="40">
+  </a>
+  &nbsp;
+  <a href="https://www.passportjs.org/" title="Passport">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/passport/passport-original.svg" alt="Passport" width="40" height="40">
+  </a>
+</p>
+
+- [EJS](https://ejs.co/)
+- [Mongoose](https://mongoosejs.com/)
+
+## Run Locally
+
+**Requirements:** Node.js, npm, and a MongoDB Atlas database.
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/nilesleesmith/simple-personal-kanban-task-manager.git
 ```
 
-Use your real cluster host and credentials. URL-encode reserved characters in the password. The application reads `MONGODB_URI`; it does not use the username and password variables separately. The application explicitly selects `personal_kanban_task_manager` through `config/database.js`, so the URI does not need to specify the database path.
+2. Open the project directory:
 
-Do not commit `atlas-credentials.env`. The `.gitignore` file excludes environment files and `node_modules`.
+```bash
+cd simple-personal-kanban-task-manager
+```
 
-## Start the application
+3. Install the dependencies:
 
-Run these commands from this folder:
-
-```powershell
+```bash
 npm install
+```
+
+4. Create `atlas-credentials.env` and add your MongoDB Atlas connection string:
+
+```dotenv
+MONGODB_URI="your_mongodb_connection_string"
+```
+
+Do not commit database credentials.
+
+5. Start the application:
+
+```bash
 npm start
 ```
 
-The start script loads `atlas-credentials.env` with Node.js's built-in `--env-file` option. The application connects to MongoDB Atlas, not a local MongoDB server. The server starts listening only after the database connection succeeds.
+6. Open `http://localhost:3001`.
 
-Open http://localhost:3001.
+## Live Site
 
-## CRUD
+https://simple-personal-kanban-task-manager.onrender.com
 
-- Create: add a task.
-- Read: view tasks on the Kanban board.
-- Update: edit a task title or move it between To Do, In Progress, and Done. Only those three task statuses are accepted.
-- Delete: delete a task.
+## Screenshots
 
-Each task query is scoped to the logged-in user's account.
+Coming soon! Desktop, tablet, and mobile screenshots will be added here.
