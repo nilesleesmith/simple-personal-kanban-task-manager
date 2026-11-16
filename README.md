@@ -98,4 +98,4 @@ https://simple-personal-kanban-task-manager.onrender.com
 
 ## Screenshots
 
-Coming soon! Desktop, tablet, and mobile screenshots will be added here.
+![Simple Personal Kanban Task Manager](./screenshots/simple-personal-kanban-task-manager-desktop.png)
